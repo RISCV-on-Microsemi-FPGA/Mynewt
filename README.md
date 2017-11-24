@@ -33,6 +33,7 @@ menu select Run > Debug Configurations...
 2. In the Debug Configurations dialog select GDB OpenOCD Debugging and click on 
 the New launch configuration button which will create a new debug launch 
 configuration for the previously selected project.
+3. On the Main tab use brouwse button to choose the blinky.elf created at
 <Project root folder >\bin\targets\my_blinky_sim\app\apps\blinky.
 4) For a RISC-V target the Debugger tab settings must be configured as follows:
 

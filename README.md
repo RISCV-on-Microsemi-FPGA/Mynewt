@@ -1,8 +1,8 @@
-# Blinky on Mi-V Soft Processors
+# Mynewt on Mi-V Soft Processors
 
 ## Overview
-This example project is based on Apache Blinky is a skeleton for Apache Mynewt projects.
-To know more about the Apache Mynewt and the Newt build tool, please refer
+This example project is based on Apache Blinky which is a skeleton for Apache Mynewt projects.
+To know more about the Apache Mynewt and the Newt build tool, refer
 [Getting Started Guide](http://mynewt.apache.org/os/introduction/).
 
 This example project is the port of Mynewt on Microsemi's Mi-V Soft Processors.
@@ -18,7 +18,7 @@ For this example project we use SoftConsole IDE to develope Mynewt application.
 
 Apache Mynewt uses Newt tool to build the Mynewt sources. However the use of 
 Software developement IDEs is also supported.
-The page [Using an IDE to Develop Mynewt Applications] http://mynewt.apache.org/faq/ide/
+The page [Using an IDE to Develop Mynewt Applications](http://mynewt.apache.org/faq/ide/)
 provides a link which describes how to use the Eclipse IDE to develop Mynewt 
 applications.
 
@@ -54,11 +54,11 @@ For this,The JTAG pins must be routed through Fabric to the top level pins.
 
 All the platform/design specific definitions such as peripheral base addresses,
 system clock frequency etc. are included in hw_platform.h. The hw_platform.h is 
-located at the root folder of this project.
+part of the MCU port.
 
 ## Target hardware
 This example project is targeted at a SmartFusion2 M2S150 advanced development kit
-design which has CoreTimer enabled. 
+design.
 The example project is built using a clock frequency of 83MHz. Trying to execute 
 this example project on a different design will result in incorrect baud rate 
 being used by CoreUART and timer load value.

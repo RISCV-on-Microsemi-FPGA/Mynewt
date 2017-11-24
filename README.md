@@ -1,2 +1,2 @@
 # Mynewt
-Mynewt on RISC-V
+Mynewt on RISC-V. To make a pull request

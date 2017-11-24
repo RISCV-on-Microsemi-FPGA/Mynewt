@@ -42,7 +42,7 @@ GDB Client Setup > Commands:
                     set mem inaccessible-by-default off 
                     set arch riscv:rv32
 
-###Documentation for Microsemi RISC-V processor, SoftConsole toochain, Debug Tools, FPGA design etc.
+### Documentation for Microsemi RISC-V processor, SoftConsole toochain, Debug Tools, FPGA design etc.
 To know more please refer: [Documentation](https://github.com/RISCV-on-Microsemi-FPGA/Documentation)
 
 ### Test Platform and FPGA design:

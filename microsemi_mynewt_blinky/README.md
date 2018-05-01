@@ -54,8 +54,7 @@ PolarFire-Eval-Kit
 M2S150-Advanced-Dev-Kit
 - [SmartFusion2 Advanced Development Kit RISC-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/Programming_The_Target_Device/PROC_SUBSYSTEM_BaseDesign)
 
-The PolarFire Eval Kit design is running at 50Mhz clock.
-The SmartFusion2 Adv. Development kit design is running at 83Mhz clock.
+The PolarFire Eval Kit design uses 50Mhz processor clock. The SmartFusion2 Adv. Developement kit design uses 83Mhz processor clock.
 
 You must configure the configure the clocks at following location in code as per your Libero design: 
 apache-mynewt-core\hw\mcu\microsemi\src\ext\riscv_hal\riscv_hal\hw_platform.h

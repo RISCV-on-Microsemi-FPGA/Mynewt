@@ -13,10 +13,10 @@ platform. It runs the simple blinky application which blinks LED on the board.
 SoftConsole is Microsemi's  Eclipse based IDE which can be used on Windows as 
 well as Linux platforms. 
 
-For this example project we use SoftConsole IDE to develope Mynewt application.
+For this example project we use SoftConsole IDE to develop Mynewt application.
 
 Apache Mynewt uses Newt tool to build the Mynewt sources. However the use of 
-Software developement IDEs is also supported.
+Software development IDEs is also supported.
 The page [Using an IDE to Develop Mynewt Applications](http://mynewt.apache.org/faq/ide/)
 provides a link which describes how to use the Eclipse IDE to develop Mynewt 
 applications.
@@ -32,7 +32,7 @@ menu select Run > Debug Configurations...
 2. In the Debug Configurations dialog select GDB OpenOCD Debugging and click on 
 the New launch configuration button which will create a new debug launch 
 configuration for the previously selected project.
-3. On the Main tab use brouwse button to choose the blinky.elf created at
+3. On the Main tab use browse button to choose the blinky.elf created at
 <Project root folder >\bin\targets\my_blinky_sim\app\apps\blinky.
 4) For a RISC-V target the Debugger tab settings must be configured as follows:
 
@@ -46,10 +46,7 @@ GDB Client Setup > Commands:
 To know more please refer: [Documentation](https://github.com/RISCV-on-Microsemi-FPGA/Documentation)
 
 ### Test Platform and FPGA design:
-This project is tested on foloowing hardware platforms:
-
-RISCV-Creative-Board
-- [IGLOO2 Creative board Mi-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/RISC-V-Creative-Board/Programming_The_Target_Device/PROC_SUBSYSTEM_MIV_RV32IMA_BaseDesign)
+This project is tested on following hardware platforms:
 
 PolarFire-Eval-Kit
 - [SmartFusion2 Advanced Development Kit RISC-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/PolarFire-Eval-Kit/Programming_The_Target_Device\MIV_RV32IMA_L1_AHB_BaseDesign)
@@ -57,16 +54,15 @@ PolarFire-Eval-Kit
 M2S150-Advanced-Dev-Kit
 - [SmartFusion2 Advanced Development Kit RISC-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/Programming_The_Target_Device/PROC_SUBSYSTEM_BaseDesign)
 
-The RISC-V creative board design is running at 66Mhz clock.
 The PolarFire Eval Kit design is running at 50Mhz clock.
 The SmartFusion2 Adv. Development kit design is running at 83Mhz clock.
 
-You must configure the configure the clocks at followin location in code as per your Libero design: 
+You must configure the configure the clocks at following location in code as per your Libero design: 
 apache-mynewt-core\hw\mcu\microsemi\src\ext\riscv_hal\riscv_hal\hw_platform.h
- #define SYS_CLK_FREQ    66000000UL
+ #define SYS_CLK_FREQ    83000000UL
 
 hw\mcu\microsemi\rv32\src\hal_os_tick.c
- #define RTC_FREQ        66000000UL
+ #define RTC_FREQ        83000000UL
 
 
 ### Microsemi SoftConsole Tool-chain:

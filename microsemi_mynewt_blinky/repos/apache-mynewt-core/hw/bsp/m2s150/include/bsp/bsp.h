@@ -35,6 +35,7 @@ extern "C" {
 #define M2S150_LED2_PIN              (GPIO_2)
 #define M2S150_LED3_PIN              (GPIO_3)
 
+/*On SF2 150 Adv dev kit M2S150_LED2_PIN corresponds to LED DS2 on board*/
 #define LED_BLINK_PIN               (M2S150_LED2_PIN)
 
 #define CONSOLE_UART                "uart0"

@@ -46,8 +46,28 @@ GDB Client Setup > Commands:
 To know more please refer: [Documentation](https://github.com/RISCV-on-Microsemi-FPGA/Documentation)
 
 ### Test Platform and FPGA design:
+This project is tested on foloowing hardware platforms:
+
+RISCV-Creative-Board
+[IGLOO2 Creative board Ni-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/RISC-V-Creative-Board/Programming_The_Target_Device/PROC_SUBSYSTEM_MIV_RV32IMA_BaseDesign)
+
+PolarFire-Eval-Kit
+[SmartFusion2 Advanced Development Kit RISC-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/PolarFire-Eval-Kit/Programming_The_Target_Device\MIV_RV32IMA_L1_AHB_BaseDesign)
+
 M2S150-Advanced-Dev-Kit
-[SmartFusion2 Advanced Development Kit with Mi-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/blob/master/Programming_The_Target_Device/PROC_SUBSYSTEM_BaseDesign)
+[SmartFusion2 Advanced Development Kit RISC-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/Programming_The_Target_Device/PROC_SUBSYSTEM_BaseDesign)
+
+The RISC-V creative board design is running at 66Mhz clock.
+The PolarFire Eval Kit design is running at 50Mhz clock.
+The SmartFusion2 Adv. Developement kit design is running at 83Mhz clock.
+
+You must configure the configure the clocks at followin location in code as per your Libero design: 
+apache-mynewt-core\hw\mcu\microsemi\src\ext\riscv_hal\riscv_hal\hw_platform.h
+    #define SYS_CLK_FREQ    66000000UL
+
+hw\mcu\microsemi\rv32\src\hal_os_tick.c
+    #define RTC_FREQ        66000000UL
+
 
 ### Microsemi SoftConsole Toolchain:
 To know more please refer: [SoftConsole](https://github.com/RISCV-on-Microsemi-FPGA/SoftConsole)

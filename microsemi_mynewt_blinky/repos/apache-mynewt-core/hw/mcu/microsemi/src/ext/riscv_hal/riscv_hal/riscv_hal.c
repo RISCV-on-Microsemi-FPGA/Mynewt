@@ -1,12 +1,12 @@
 /*******************************************************************************
- * (c) Copyright 2016-2017 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2016-2018 Microsemi SoC Products Group. All rights reserved.
  *
  * @file riscv_hal.c
  * @author Microsemi SoC Products Group
  * @brief Implementation of Hardware Abstraction Layer for Mi-V soft processors
- *   
- * SVN $Revision: 9575 $
- * SVN $Date: 2017-11-14 14:23:11 +0530 (Tue, 14 Nov 2017) $
+ *
+ * SVN $Revision: 9835 $
+ * SVN $Date: 2018-03-19 19:11:35 +0530 (Mon, 19 Mar 2018) $
  */
 #include <stdlib.h>
 #include <stdint.h>
@@ -18,13 +18,13 @@
 extern "C" {
 #endif
 
-#define RTC_PRESCALER 100
+#define RTC_PRESCALER 100UL
 
-#define SUCCESS 0
-#define ERROR   1
+#define SUCCESS 0U
+#define ERROR   1U
 
 /*------------------------------------------------------------------------------
- * 
+ *
  */
 uint8_t Invalid_IRQHandler(void);
 uint8_t External_1_IRQHandler(void);
@@ -60,17 +60,15 @@ uint8_t External_30_IRQHandler(void);
 uint8_t External_31_IRQHandler(void);
 
 /*------------------------------------------------------------------------------
- * 
+ *
  */
-extern void handle_m_ext_interrupt();
-extern void handle_m_timer_interrupt();
-extern void Software_IRQHandler();
+extern void Software_IRQHandler(void);
 
 /*------------------------------------------------------------------------------
  * Increment value for the mtimecmp register in order to achieve a system tick
  * interrupt as specified through the SysTick_Config() function.
  */
-static uint64_t g_systick_increment = 0;
+static uint64_t g_systick_increment = 0U;
 
 /*------------------------------------------------------------------------------
  * Disable all interrupts.
@@ -95,12 +93,13 @@ void __enable_irq(void)
 uint32_t SysTick_Config(uint32_t ticks)
 {
     uint32_t ret_val = ERROR;
-    
-    g_systick_increment = ticks / RTC_PRESCALER;
 
-    if (g_systick_increment > 0)
+    g_systick_increment = (uint64_t)(ticks) / RTC_PRESCALER;
+
+    if (g_systick_increment > 0U)
     {
         uint32_t mhart_id = read_csr(mhartid);
+
         PRCI->MTIMECMP[mhart_id] = PRCI->MTIME + g_systick_increment;
 
         set_csr(mie, MIP_MTIP);
@@ -109,14 +108,14 @@ uint32_t SysTick_Config(uint32_t ticks)
 
         ret_val = SUCCESS;
     }
-    
+
     return ret_val;
 }
 
 /*------------------------------------------------------------------------------
  * RISC-V interrupt handler for machine timer interrupts.
  */
-void handle_m_timer_interrupt()
+static void handle_m_timer_interrupt(void)
 {
     clear_csr(mie, MIP_MTIP);
 
@@ -167,9 +166,9 @@ uint8_t (*ext_irq_handler_table[32])(void) =
 };
 
 /*------------------------------------------------------------------------------
- * 
+ *
  */
-void handle_m_ext_interrupt()
+static void handle_m_ext_interrupt(void)
 {
     uint32_t int_num  = PLIC_ClaimIRQ();
     uint8_t disable = EXT_IRQ_KEEP_ENABLED;
@@ -184,7 +183,7 @@ void handle_m_ext_interrupt()
     }
 }
 
-void handle_m_soft_interrupt()
+static void handle_m_soft_interrupt(void)
 {
     /*Clear software interrupt*/
     PRCI->MSIP[0] = 0x00;

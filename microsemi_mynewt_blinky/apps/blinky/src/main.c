@@ -52,17 +52,21 @@ main(int argc, char **argv)
 
     sysinit();
 
-    g_led_pin = LED_BLINK_PIN;
-    hal_gpio_init_out(g_led_pin, 1);
+//    g_led_pin = M2S150_LED0_PIN;
+    hal_gpio_init_out(M2S150_LED0_PIN, 1);
+    hal_gpio_init_out(M2S150_LED1_PIN, 1);
+    hal_gpio_init_out(M2S150_LED2_PIN, 1);
 
     while (1) {
         ++g_task1_loops;
 
         /* Wait one second */
-        os_time_delay(OS_TICKS_PER_SEC);
+        os_time_delay(OS_TICKS_PER_SEC/2);
 
         /* Toggle the LED */
-        hal_gpio_toggle(g_led_pin);
+        hal_gpio_toggle(M2S150_LED0_PIN);
+        hal_gpio_toggle(M2S150_LED1_PIN);
+        hal_gpio_toggle(M2S150_LED2_PIN);
     }
     assert(0);
 
